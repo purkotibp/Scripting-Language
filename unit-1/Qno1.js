@@ -1,14 +1,11 @@
+function reverseNumber(num) {
+  // Convert number to a string, split it into an array, reverse the array, and join it back to a string
+  let reversed = num.toString().split('').reverse().join('');
+  
+  // Convert the reversed string back to a number
+  return parseInt(reversed) * Math.sign(num); // Maintain the sign (positive or negative)
+}
 
-        function reverseNumber() {
-            var num = document.getElementById('numberInput').value;
-            if (num === '') {
-                document.getElementById('result').innerText = 'Please enter a number.';
-                return;
-            }
-            var reversedNum = num.toString().split('').reverse().join('');
-            if (num < 0) {
-                reversedNum = '-' + reversedNum.slice(0, reversedNum.length - 1);
-            }
-            document.getElementById('result').innerText = 'Reversed number: ' + reversedNum;
-        }
-   
+// Example usage:
+console.log(reverseNumber(12345));  // Output: 54321
+console.log(reverseNumber(-9876));  // Output: -6789
