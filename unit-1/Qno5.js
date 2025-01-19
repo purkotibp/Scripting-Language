@@ -1,29 +1,30 @@
+function getCurrentDate() {
+  const today = new Date();
+  
+  const day = String(today.getDate()).padStart(2, '0');
+  const month = String(today.getMonth() + 1).padStart(2, '0');  // Month is 0-indexed
+  const year = today.getFullYear();
+  const weekday = today.toLocaleString('default', { weekday: 'long' });
 
-        function displayDate() {
-            const today = new Date();
-            const month = today.getMonth() + 1;
-            const day = today.getDate();
-            const year = today.getFullYear();
-            const dayOfWeek = today.toLocaleString('default', { weekday: 'long' });
-            const monthName = today.toLocaleString('default', { month: 'long' });
+  // Different formats
+  const format1 = `${month}-${day}-${year}`;  // mm-dd-yyyy
+  const format2 = `${month}/${day}/${year}`;  // mm/dd/yyyy
+  const format3 = `${day}-${month}-${year}`;  // dd-mm-yyyy
+  const format4 = `${day}/${month}/${year}`;  // dd/mm/yyyy
+  const format5 = `${year} ${weekday} ${day}`;  // yyyy month date day
 
-            const dateFormats = [
-                `${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}-${year}`,
-                `${month < 10 ? '0' + month : month}/${day < 10 ? '0' + day : day}/${year}`,
-                `${day < 10 ? '0' + day : day}-${month < 10 ? '0' + month : month}-${year}`,
-                `${day < 10 ? '0' + day : day}/${month < 10 ? '0' + month : month}/${year}`,
-                `${year} ${monthName} ${day} ${dayOfWeek}`
-            ];
+  return {
+    format1,
+    format2,
+    format3,
+    format4,
+    format5
+  };
+}
 
-            document.getElementById('result').innerHTML = `
-                <b>Current Date:</b><br>
-                <ul>
-                    <li>${dateFormats[0]}</li>
-                    <li>${dateFormats[1]}</li>
-                    <li>${dateFormats[2]}</li>
-                    <li>${dateFormats[3]}</li>
-                    <li>${dateFormats[4]}</li>
-                </ul>
-            `;
-        }
-   
+const currentDate = getCurrentDate();
+console.log(currentDate.format1);  // mm-dd-yyyy
+console.log(currentDate.format2);  // mm/dd/yyyy
+console.log(currentDate.format3);  // dd-mm-yyyy
+console.log(currentDate.format4);  // dd/mm/yyyy
+console.log(currentDate.format5);  // yyyy month date day
