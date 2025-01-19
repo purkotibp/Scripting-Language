@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remove Characters from String</title>
+</head>
+<body>
+  <h1>Remove Characters from a String</h1>
+
+  <script>
+    function removeCharacters(str, start, numChars) {
+      if (start < 0 || numChars < 0 || start >= str.length) {
+        return str; 
+      }
+      return str.slice(0, start) + str.slice(start + numChars);
+    }
+
+    const originalString = "Hello, World!";
+    const startIndex = 5; 
+    const numberOfChars = 2; 
+
+    const modifiedString = removeCharacters(originalString, startIndex, numberOfChars);
+    alert("Original String: " + originalString);
+    alert("Modified String: " + modifiedString);
+  </script>
+</body>
+</html>

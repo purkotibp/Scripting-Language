@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Challenges</title>
+  <style>
+    .wrapper {
+      text-align: center;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      font-size: 2em;
+    }
+
+    h2 {
+      font-size: 1.5em;
+      color: #333;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      font-size: 1.2em;
+      padding: 10px;
+      margin: 5px 0;
+    }
+
+    #year {
+      font-size: 2em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <h1>Asabeneh Yetayeh challenges in <span id="year">2020</span></h1>
+    <h2>30DaysOfJavaScript Challenge</h2>
+    <ul>
+      <li class="completed">Python Challenge Done</li>
+      <li class="ongoing">JavaScript Challenge Ongoing</li>
+      <li class="coming">React Challenge Coming</li>
+      <li class="coming">FullStack Challenge Coming</li>
+      <li class="coming">DataAnalysis Challenge Coming</li>
+      <li class="coming">ReactNative Challenge Coming</li>
+      <li class="coming">MachineLearning Challenge Coming</li>
+    </ul>
+  </div>
+
+  <script>
+    function changeYearColor() {
+      const yearElement = document.getElementById("year");
+      let currentColor = window.getComputedStyle(yearElement).color;
+      yearElement.style.color = currentColor === 'rgb(255, 0, 0)' ? 'blue' : 'red';
+    }
+
+    function changeDateTimeBackgroundColor() {
+      const wrapper = document.querySelector('.wrapper');
+      let currentBackground = window.getComputedStyle(wrapper).backgroundColor;
+      wrapper.style.backgroundColor = currentBackground === 'rgb(255, 255, 255)' ? 'lightgray' : 'white';
+    }
+
+    function updateChallengeBackgrounds() {
+      const challenges = document.querySelectorAll('li');
+      
+      challenges.forEach(challenge => {
+        if (challenge.classList.contains('completed')) {
+          challenge.style.backgroundColor = 'green';
+        } else if (challenge.classList.contains('ongoing')) {
+          challenge.style.backgroundColor = 'yellow';
+        } else if (challenge.classList.contains('coming')) {
+          challenge.style.backgroundColor = 'red';
+        }
+      });
+    }
+
+    setInterval(changeYearColor, 1000);
+    setInterval(changeDateTimeBackgroundColor, 1000);
+    window.onload = updateChallengeBackgrounds;
+  </script>
+
+</body>
+</html>

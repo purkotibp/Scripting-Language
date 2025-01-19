@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clone and Remove Rows</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        .action-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .add-btn {
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <table id="productTable">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>
+                    <select>
+                        <option>Select Product</option>
+                        <option>Product 1</option>
+                        <option>Product 2</option>
+                    </select>
+                </td>
+                <td><input type="text"></td>
+                <td><button class="action-btn" onclick="removeRow(this)">🗑️</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="add-btn" onclick="addNewRow()">Add New</button>
+    <script>
+        function addNewRow() {
+            const table = document.getElementById('productTable').getElementsByTagName('tbody')[0];
+            const newRow = table.rows[0].cloneNode(true);
+
+            // Reset the select box and input field for the new row
+            newRow.cells[1].getElementsByTagName('select')[0].selectedIndex = 0;
+            newRow.cells[2].getElementsByTagName('input')[0].value = '';
+            table.appendChild(newRow);
+        }
+
+        function removeRow(button) {
+            const row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+    </script>
+</body>
+</html>

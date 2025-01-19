@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Generator</title>
+  <style>
+    .even {
+      color: green;
+    }
+    .odd {
+      color: blue;
+    }
+    .prime {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Number Generator</h2>
+
+<label for="number-input">Enter a number: </label>
+<input type="number" id="number-input" min="1">
+<button onclick="generateNumbers()">Generate</button>
+
+<div id="number-output"></div>
+
+<script>
+  function generateNumbers() {
+    const inputNumber = parseInt(document.getElementById('number-input').value);
+    const outputDiv = document.getElementById('number-output');
+    outputDiv.innerHTML = ''; // Clear previous output
+
+    if (isNaN(inputNumber) || inputNumber < 1) {
+      alert('Please enter a valid number greater than 0');
+      return;
+    }
+
+    for (let i = 1; i <= inputNumber; i++) {
+      const span = document.createElement('span');
+      span.textContent = i + ' ';
+      
+      if (isPrime(i)) {
+        span.classList.add('prime');
+      } else if (i % 2 === 0) {
+        span.classList.add('even');
+      } else {
+        span.classList.add('odd');
+      }
+      
+      outputDiv.appendChild(span);
+    }
+  }
+
+  function isPrime(num) {
+    if (num < 2) return false;
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+      if (num % i === 0) return false;
+    }
+    return true;
+  }
+</script>
+
+</body>
+</html>

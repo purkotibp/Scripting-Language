@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculate Time Difference in Days</title>
+</head>
+<body>
+  <h1>Calculate Time Difference in Days</h1>
+
+  <script>
+    function getTimeDifferenceInDays(date1, date2) {
+      const timeDifference = Math.abs(date2 - date1); // Difference in milliseconds
+      const dayDifference = timeDifference / (1000 * 3600 * 24); // Convert milliseconds to days
+      return dayDifference;
+    }
+
+    // Example usage:
+    const date1 = new Date('2023-01-01');
+    const date2 = new Date('2023-01-15');
+    
+    const difference = getTimeDifferenceInDays(date1, date2);
+    alert("The time difference between the two dates is " + difference + " days.");
+  </script>
+</body>
+</html>

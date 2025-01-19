@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Button Events</title>
+  <style>
+    #myParagraph {
+      font-size: 12pt;
+    }
+  </style>
+</head>
+<body>
+  <p id="myParagraph">This is a paragraph that will be modified by the buttons.</p>
+  <button onclick="changeBackgroundColor()">Change Background Color</button>
+  <button onclick="hideParagraph()">Hide Paragraph</button>
+  <button onclick="showParagraph()">Show Paragraph</button>
+  <button onclick="increaseFontSize()">Increase Font Size</button>
+  <button onclick="decreaseFontSize()">Decrease Font Size</button>
+  <button onclick="resetFontSize()">Reset Font Size</button>
+  <button onclick="changeTextColor()">Change Text Color</button>
+
+  <script>
+    function changeBackgroundColor() {
+      document.getElementById('myParagraph').style.backgroundColor = 'yellow';
+    }
+
+    function hideParagraph() {
+      document.getElementById('myParagraph').style.display = 'none';
+    }
+
+    function showParagraph() {
+      document.getElementById('myParagraph').style.display = 'block';
+    }
+
+    function increaseFontSize() {
+      let paragraph = document.getElementById('myParagraph');
+      let currentSize = parseFloat(window.getComputedStyle(paragraph, null).getPropertyValue('font-size'));
+      paragraph.style.fontSize = (currentSize + 2) + 'pt';
+    }
+
+    function decreaseFontSize() {
+      let paragraph = document.getElementById('myParagraph');
+      let currentSize = parseFloat(window.getComputedStyle(paragraph, null).getPropertyValue('font-size'));
+      paragraph.style.fontSize = (currentSize - 2) + 'pt';
+    }
+
+    function resetFontSize() {
+      document.getElementById('myParagraph').style.fontSize = '12pt';
+    }
+
+    function changeTextColor() {
+      document.getElementById('myParagraph').style.color = 'blue';
+    }
+  </script>
+</body>
+</html>

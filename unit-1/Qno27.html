@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Manipulation Example</title>
+  <style>
+    .updatedStyle {
+      color: white;
+      background-color: blue;
+      border: 2px solid black;
+      font-size: 18px;
+      font-family: Arial, sans-serif;
+    }
+
+    .green {
+      color: green;
+    }
+
+    .red {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>DOM Manipulation Example</h1>
+
+  <p id="para1">First Paragraph</p>
+  <p id="para2">Second Paragraph</p>
+  <p id="para3">Third Paragraph</p>
+  <p id="para4">Fourth Paragraph</p>
+
+  <script>
+    let firstParagraph = document.querySelector('p');
+    console.log("First Paragraph:", firstParagraph.textContent);
+
+    let para1 = document.querySelector('#para1');
+    let para2 = document.querySelector('#para2');
+    let para3 = document.querySelector('#para3');
+    let para4 = document.querySelector('#para4');
+    
+    console.log("Paragraph 1:", para1.textContent);
+    console.log("Paragraph 2:", para2.textContent);
+    console.log("Paragraph 3:", para3.textContent);
+    console.log("Paragraph 4:", para4.textContent);
+
+    let allParagraphs = document.querySelectorAll('p');
+    console.log("NodeList of Paragraphs:", allParagraphs);
+
+    allParagraphs.forEach((para, index) => {
+      console.log(`Paragraph ${index + 1}:`, para.textContent);
+    });
+
+    para4.textContent = "Fourth Paragraph";
+
+    allParagraphs.forEach((para, index) => {
+      para.setAttribute('id', `para${index + 1}`);
+      para.setAttribute('class', `class${index + 1}`);
+    });
+
+    allParagraphs.forEach((para) => {
+      para.classList.add('updatedStyle');
+    });
+
+    allParagraphs.forEach((para, index) => {
+      if (index % 2 === 0) {
+        para.classList.add('green');
+      } else {
+        para.classList.add('red');
+      }
+    });
+
+    allParagraphs.forEach((para, index) => {
+      para.textContent = `Updated Paragraph ${index + 1}`;
+      para.id = `newPara${index + 1}`;
+      para.className = `updatedClass${index + 1}`;
+    });
+  </script>
+
+</body>
+</html>

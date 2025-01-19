@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countries Table</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    table, th, td {
+      border: 1px solid black;
+    }
+    th, td {
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: white;
+    }
+    td {
+      background-color: white;
+    }
+  </style>
+</head>
+<body>
+
+<h2>List of 50 Countries</h2>
+
+<table id="countries-table">
+  <thead>
+    <tr>
+      <th>Country 1</th>
+      <th>Country 2</th>
+      <th>Country 3</th>
+      <th>Country 4</th>
+      <th>Country 5</th>
+      <th>Country 6</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<script>
+  const countries = [
+    'Argentina', 'Brazil', 'Canada', 'Denmark', 'Egypt', 'France',
+    'Germany', 'Hungary', 'India', 'Jamaica', 'Kenya', 'Lithuania',
+    'Mexico', 'Norway', 'Oman', 'Poland', 'Qatar', 'Russia',
+    'Spain', 'Turkey', 'Ukraine', 'Vietnam', 'Wales', 'Yemen', 'Zambia',
+    'Australia', 'Belgium', 'China', 'Dominican Republic', 'Estonia', 'Fiji',
+    'Greece', 'Iceland', 'Jordan', 'Kuwait', 'Latvia', 'Malaysia',
+    'New Zealand', 'Portugal', 'Romania', 'Singapore', 'Thailand', 'Uganda',
+    'Venezuela', 'Warren Islands', 'Xenophon Islands', 'Zimbabwe', 'Algeria',
+    'Bulgaria', 'Czech Republic', 'Finland', 'Georgia', 'Honduras', 'Israel'
+  ];
+
+  function displayCountries() {
+    const tableBody = document.querySelector('#countries-table tbody');
+    let row = document.createElement('tr');
+    
+    for (let i = 0; i < countries.length; i++) {
+      let cell = document.createElement('td');
+      cell.textContent = countries[i];
+      row.appendChild(cell);
+
+      if ((i + 1) % 6 === 0) {
+        tableBody.appendChild(row);
+        row = document.createElement('tr');
+      }
+    }
+
+    if (row.children.length > 0) {
+      tableBody.appendChild(row);
+    }
+  }
+
+  displayCountries();
+</script>
+
+</body>
+</html>
